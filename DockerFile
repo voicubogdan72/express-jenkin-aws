@@ -1,0 +1,18 @@
+# Folosim o imagine de bază node.js
+FROM node:14
+
+# Setăm directorul de lucru în care se va desfășura aplicația în container
+WORKDIR /usr/src/app
+
+# Copiem pachetul de dependințe și fișierele necesare în directorul de lucru
+COPY package*.json ./
+COPY app.js .
+
+# Instalăm dependințele
+RUN npm install
+
+# Expunem portul 3000, pe care rulează serverul Express
+EXPOSE 3000
+
+# Comanda pentru a porni aplicația atunci când containerul este lansat
+CMD ["node", "app.js"]

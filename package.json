@@ -4,11 +4,18 @@
   "description": "Jenkins test",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "react-scripts start",
+    "build": "node build",
+    "test": "npm test",
+    "eject": "react-scripts eject"
   },
   "author": "Bogdan Voicu",
   "license": "ISC",
   "dependencies": {
     "express": "^4.18.3"
+  },
+  "devDependencies": {
+    "mocha": "^10.3.0",
+    "supertest": "^6.3.4"
   }
 }

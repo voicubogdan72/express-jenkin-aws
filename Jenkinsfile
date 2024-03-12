@@ -1,3 +1,4 @@
+
 pipeline{
     agent any
 
@@ -7,16 +8,41 @@ pipeline{
             steps{
                 git branch: 'main', url: 'https://github.com/voicubogdan72/express-jenkin-aws.git'
             }
+           
         }
-        stage('RUN'){
+        stage ('Install'){
             steps{
-                sh 'node  app.js'
+                sh 'npm install'
+            }
+        }
+
+        stage('TEST'){
+            steps{
+                sh 'mocha  test.js'
             }
             post {
                 success {
-                    echo "App is running!!"
+                    echo "App was tested!!"
                 }
             }
         }
+         stage('Run'){
+            steps{
+                sh 'node app.js'
+            }
+            post {
+                success {
+                    echo "App was ok!!"
+                }
+            }
+        }
+         
     }
+     post{
+
+        always{
+            echo 'Slack Notifications'
+            slackSend channel: '#jenkinscicd'
+        }     
+            }
 }
