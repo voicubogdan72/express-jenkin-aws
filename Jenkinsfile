@@ -5,7 +5,7 @@ pipeline{
 
         stage ('Fetch Code'){
             steps{
-                git branch: 'main', url: 'https://github.com/voicubogdan72/jenkins-aws-axum.git'
+                git branch: 'main', url: 'https://github.com/voicubogdan72/express-jenkin-aws.git'
             }
         }
         stage('RUN'){
